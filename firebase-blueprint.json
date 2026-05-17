@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A member of the Universal Farm community.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "bio": { "type": "string" },
+        "kcBalance": { "type": "number" },
+        "role": { "type": "string", "enum": ["farmer", "supporter"] }
+      }
+    },
+    "Farm": {
+      "title": "Farm",
+      "description": "An organic regenerative farm.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Natural products for sale.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "priceKC": { "type": "number" },
+        "farmId": { "type": "string" }
+      }
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "KC trade log.",
+      "type": "object",
+      "properties": {
+        "fromId": { "type": "string" },
+        "toId": { "type": "string" },
+        "amountKC": { "type": "number" },
+        "timestamp": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    },
+    "farms/{farmId}": {
+      "schema": "Farm",
+      "description": "Farm listings."
+    },
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Available product listings."
+    },
+    "transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Economic records."
+    }
+  }
+}
